@@ -2,3 +2,5 @@
 uvicorn
 requests
 feedparser
+requests
+schedule

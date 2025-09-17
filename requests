@@ -1,0 +1,29 @@
+import requests
+
+# AppCreator24 API endpoint
+API_URL = "https://dailybrief-ai.onrender.com/dailybrief"
+
+# Notification payload
+payload = {
+    "title": "Your Notification Title",
+    "message": "This is the body of your push notification",
+    # Add other fields if needed, e.g., target user IDs
+}
+
+# Optional headers if API requires them (e.g., API key)
+headers = {
+    "Content-Type": "application/json",
+    # "Authorization": "Bearer YOUR_API_KEY",  # Uncomment if API requires authentication
+}
+
+def send_push_notification():
+    try:
+        response = requests.post(API_URL, json=payload, headers=headers)
+        response.raise_for_status()
+        print("Push notification sent successfully!")
+        print("Response:", response.json())
+    except requests.exceptions.RequestException as e:
+        print("Error sending push notification:", e)
+
+if __name__ == "__main__":
+    send_push_notification()
